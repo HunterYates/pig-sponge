@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Pig {
 
     /*
@@ -26,7 +28,30 @@ public class Pig {
 
     // Implement your solution here!
     public static String pigLatin(String sentence) {
-        return null;
+        ArrayList<Character> vowels = new ArrayList<Character>();
+        vowels.add('a');
+        vowels.add('e');
+        vowels.add('i');
+        vowels.add('o');
+        vowels.add('u');
+
+        String[] words = sentence.split(" ");
+        for (int i = 0; i < words.length; i++) {
+            if (!vowels.contains(words[i].charAt(0))) {
+                char firstLetter = words[i].charAt(0);
+                words[i] = words[i].substring(1) + firstLetter + "ay";
+            }
+        }
+
+        if (words.length > 1) {
+            String newSentence = words[0];
+            for (int i = 1; i < words.length; i++) {
+                newSentence += (" " + words[i]);
+            }
+            return newSentence;
+        } else {
+            return words[0];
+        }
     }
 
 
